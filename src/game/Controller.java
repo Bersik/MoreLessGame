@@ -82,7 +82,7 @@ public class Controller {
                 sc.next();
             } else {
                 num = sc.nextInt();
-                if (isBetween(num, model.getMinNumber(), model.getMaxNumber()))
+                if (model.isBetween(num))
                     break;
                 else {
                     view.formatMessage(View.WRONG_INPUT_INT_DATA_RANGE + View.INPUT_INT_DATA, min, max);
@@ -107,7 +107,4 @@ public class Controller {
         view.formatMessage(View.COUNT_STEPS_MESSAGE, model.getSteps().size());
     }
 
-    public static boolean isBetween(int num, int min, int max) {
-        return (min < num) && (num < max);
-    }
 }

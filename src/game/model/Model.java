@@ -80,6 +80,10 @@ public class Model {
         number = rand(minNumber, maxNumber);
     }
 
+    public boolean isBetween(int num) {
+        return (minNumber < num) && (num < maxNumber);
+    }
+
     public int getMinNumber() {
         return minNumber;
     }
