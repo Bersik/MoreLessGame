@@ -38,13 +38,19 @@ public class Controller {
         while (true) {
             int number = inputIntValueWithScanner(model.getMinNumber(), model.getMaxNumber());
             view.printlnMessage(View.ENTERED_INT_DATA + number);
-            if (model.step(number)) {
+            int step = model.step(number);
+            if (step == 0) {
                 view.formatMessage(View.WIN_MESSAGE, model.getNumber());
 
                 showUserSteps(model.getSteps());
                 break;
-            } else
+            } else {
+                if (step == 1)
+                    view.printMessage(View.MORE_MESSAGE);
+                else
+                    view.printMessage(View.LESS_MESSAGE);
                 view.printMessage(View.NEXT_STEP_MESSAGE);
+            }
         }
     }
 
@@ -102,6 +108,6 @@ public class Controller {
     }
 
     public static boolean isBetween(int num, int min, int max) {
-        return (min <= num) && (num <= max);
+        return (min < num) && (num < max);
     }
 }

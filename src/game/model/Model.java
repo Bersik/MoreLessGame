@@ -35,30 +35,32 @@ public class Model {
      * @param userNumber a number that user entered
      * @return if the game is over - true, otherwise - false
      */
-    public boolean step(int userNumber) {
+    public int step(int userNumber) {
         StepInfo stepInfo = new StepInfo(minNumber, maxNumber, userNumber);
         steps.add(stepInfo);
 
         if (userNumber == number) {
             finished = true;
-            return true;
+            return 0;
         }
-        if ((minNumber <= userNumber) && (userNumber < number))
-            minNumber = userNumber + 1;
-        else
-            maxNumber = userNumber - 1;
-        return false;
+        if ((minNumber <= userNumber) && (userNumber < number)) {
+            minNumber = userNumber;
+            return 1;
+        } else {
+            maxNumber = userNumber;
+            return -1;
+        }
     }
 
     /**
-     * Generates a number in the given range [min,max] (including limits)
+     * Generates a number in the given range [min,max] (without limits)
      *
      * @param min lower limit
      * @param max upper limit
      * @return generated number
      */
     public int rand(int min, int max) {
-        return min + random.nextInt(max - min + 1);
+        return 1 + min + random.nextInt(max - min - 1);
     }
 
     /**

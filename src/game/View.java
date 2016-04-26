@@ -10,6 +10,8 @@ public class View {
     public static final String WELCOME_MESSAGE = "Welcome!";
     public static final String WRONG_INPUT_INT_DATA = "Wrong input! Repeat please! ";
     public static final String ENTERED_INT_DATA = "You entered the number ";
+    public static final String MORE_MESSAGE = "Conceived number more than. ";
+    public static final String LESS_MESSAGE = "Conceived number less than. ";
     public static final String NEXT_STEP_MESSAGE = "Take the next step. ";
     public static final String WRONG_INPUT_INT_DATA_RANGE = "Wrong input! INT value should include a range! Repeat please! ";
     public static final String STATISTIC_MESSAGE = "Your statistic:";
