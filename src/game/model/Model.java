@@ -33,9 +33,12 @@ public class Model {
      * Step in the game
      *
      * @param userNumber a number that user entered
-     * @return if the game is over - true, otherwise - false
+     * @return if the game is over - 0, if {@code number} > {@code userNumber} - 1, else - -1
      */
     public int step(int userNumber) {
+        if (!isBetween(userNumber))
+            throw new IllegalArgumentException("userNumber should be between minNumber and maxNumber");
+
         StepInfo stepInfo = new StepInfo(minNumber, maxNumber, userNumber);
         steps.add(stepInfo);
 
@@ -105,6 +108,8 @@ public class Model {
     }
 
     public void setNumber(int number) {
+        if (!isBetween(number))
+            throw new IllegalArgumentException("Number should be between minNumber and maxNumber");
         this.number = number;
     }
 
