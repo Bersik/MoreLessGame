@@ -1,5 +1,6 @@
 package game.model;
 
+import game.Constants;
 import game.Controller;
 
 import java.util.ArrayList;
@@ -46,7 +47,7 @@ public class Model {
             finished = true;
             return 0;
         }
-        if ((minNumber <= userNumber) && (userNumber < number)) {
+        if (userNumber < number) {
             minNumber = userNumber;
             return 1;
         } else {
@@ -73,7 +74,7 @@ public class Model {
      * @see Controller
      */
     public int rand() {
-        return rand(0, Controller.RAND_MAX);
+        return rand(0, Constants.RAND_MAX);
     }
 
     /**

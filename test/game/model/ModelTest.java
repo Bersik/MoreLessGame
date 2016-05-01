@@ -1,5 +1,6 @@
 package game.model;
 
+import game.Constants;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -11,6 +12,9 @@ import static org.junit.Assert.*;
 public class ModelTest {
     private static final int MIN_NUMBER = 0;
     private static final int MAX_NUMBER = 100;
+    private static final int COUNT_ITERATION = 1000;
+    private static final int RAND_MIN_NUMBER = 20;
+    private static final int RAND_MAX_NUMBER = 50;
 
     private static Model model;
 
@@ -22,7 +26,7 @@ public class ModelTest {
     }
 
     @Test
-    public void modelTestOneStep() throws Exception {
+    public void testModelTestOneStep() throws Exception {
         final int NUMBER = 50;
         model.setNumber(NUMBER);
         assertTrue(model.isBetween(NUMBER));
@@ -33,7 +37,7 @@ public class ModelTest {
     }
 
     @Test
-    public void modelTestThreeStep() throws Exception {
+    public void testModelTestThreeStep() throws Exception {
         final int NUMBER = 50;
         model.setNumber(NUMBER);
         //step 1
@@ -53,15 +57,33 @@ public class ModelTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void modelExceptionZero() throws Exception {
+    public void testModelExceptionZero() throws Exception {
         model.setNumber(0);
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void modelExceptionWithoutRange() throws Exception {
+    public void testModelExceptionWithoutRange() throws Exception {
         model.setNumber(50);
         model.step(120);
     }
 
+    @Test
+    public void testModelRand() throws Exception {
+        int number;
+        for (int i = 0; i < COUNT_ITERATION; i++) {
+            number = model.rand();
+            assertTrue(number > 0);
+            assertTrue(number < Constants.RAND_MAX);
+        }
+    }
 
+    @Test
+    public void testModelRandParameters() throws Exception {
+        int number;
+        for (int i = 0; i < COUNT_ITERATION; i++) {
+            number = model.rand(RAND_MIN_NUMBER, RAND_MAX_NUMBER);
+            assertTrue(number > RAND_MIN_NUMBER);
+            assertTrue(number < RAND_MAX_NUMBER);
+        }
+    }
 }

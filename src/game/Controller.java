@@ -12,17 +12,11 @@ import java.util.Scanner;
  * @author Serhii Kisilchuk
  */
 public class Controller {
-    // The Constants
-    public static final int MIN_NUMBER = 0;
-    public static final int MAX_NUMBER = 100;
-    public static final int RAND_MAX = 100;
-
     private Scanner sc = new Scanner(System.in);
 
     // Constructor
     Model model;
     View view;
-
 
     public Controller(Model model, View view) {
         this.model = model;
@@ -59,8 +53,8 @@ public class Controller {
      */
     public void initModel() {
         model.setFinished(false);
-        model.setMinNumber(MIN_NUMBER);
-        model.setMaxNumber(MAX_NUMBER);
+        model.setMinNumber(Constants.MIN_NUMBER);
+        model.setMaxNumber(Constants.MAX_NUMBER);
         model.generateNumber();
     }
 
